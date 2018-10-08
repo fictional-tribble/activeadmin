@@ -26,10 +26,12 @@ steps: &steps
       paths:
         - vendor/bundle
 
-  - run: |
-      COVERAGE=true bundle exec rake
-      bundle exec rake docs:build
-      bundle exec rake lint
+  - run:
+      name: Run checks
+      command: |
+        COVERAGE=true bundle exec rake
+        bundle exec rake docs:build
+        bundle exec rake lint
 
 jobs:
   ruby-2.3-rails-42:
@@ -37,7 +39,7 @@ jobs:
       - image: circleci/ruby:2.3.7-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_42.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_42.gemfile
 
     steps:
       *steps
@@ -47,7 +49,7 @@ jobs:
       - image: circleci/ruby:2.3.7-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_50.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
 
     steps:
       *steps
@@ -57,7 +59,7 @@ jobs:
       - image: circleci/ruby:2.3.7-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_51.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
 
     steps:
       *steps
@@ -67,7 +69,7 @@ jobs:
       - image: circleci/ruby:2.3.7-node-browsers
 
     environment:
-      GEMFILE: Gemfile
+      BUNDLE_GEMFILE: Gemfile
 
     steps:
       *steps
@@ -77,7 +79,7 @@ jobs:
       - image: circleci/ruby:2.4.4-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_42.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_42.gemfile
 
     steps:
       *steps
@@ -87,7 +89,7 @@ jobs:
       - image: circleci/ruby:2.4.4-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_50.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
 
     steps:
       *steps
@@ -97,7 +99,7 @@ jobs:
       - image: circleci/ruby:2.4.4-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_51.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
 
     steps:
       *steps
@@ -107,7 +109,7 @@ jobs:
       - image: circleci/ruby:2.4.4-node-browsers
 
     environment:
-      GEMFILE: Gemfile
+      BUNDLE_GEMFILE: Gemfile
 
     steps:
       *steps
@@ -117,7 +119,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_42.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_42.gemfile
 
     steps:
       *steps
@@ -127,7 +129,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_50.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
 
     steps:
       *steps
@@ -137,7 +139,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_51.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
 
     steps:
       *steps
@@ -147,7 +149,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
 
     environment:
-      GEMFILE: Gemfile
+      BUNDLE_GEMFILE: Gemfile
 
     steps:
       *steps
@@ -157,7 +159,7 @@ jobs:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_42.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_42.gemfile
       JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
 
     steps:
@@ -168,7 +170,7 @@ jobs:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_50.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
       JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
 
     steps:
@@ -179,7 +181,7 @@ jobs:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
     environment:
-      GEMFILE: gemfiles/rails_51.gemfile
+      BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
       JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
 
     steps:
@@ -190,7 +192,7 @@ jobs:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
     environment:
-      GEMFILE: Gemfile
+      BUNDLE_GEMFILE: Gemfile
       JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
 
     steps:
