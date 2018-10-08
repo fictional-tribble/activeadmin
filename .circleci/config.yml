@@ -1,0 +1,218 @@
+---
+
+version: 2
+
+steps: &steps
+  - checkout
+
+  - restore_cache:
+      keys:
+        - bundler-dependencies-{{ checksum "$BUNDLE_GEMFILE.lock" }}
+
+  - run:
+      name: Install dependencies
+      command: bundle install --without development --path vendor/bundle --retry 3 --jobs 3
+
+  - run:
+      name: Install chromedriver
+      command: bin/install_chromedriver.sh
+
+  - save_cache:
+      key: bundler-dependencies-{{ checksum "$BUNDLE_GEMFILE.lock" }}
+      paths:
+        - vendor/bundle
+
+  - run: |
+      COVERAGE=true bundle exec rake
+      bundle exec rake docs:build
+      bundle exec rake lint
+
+jobs:
+  ruby-2.3-rails-42:
+    docker:
+      - image: circleci/ruby:2.3.7-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_42.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.3-rails-50:
+    docker:
+      - image: circleci/ruby:2.3.7-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_50.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.3-rails-51:
+    docker:
+      - image: circleci/ruby:2.3.7-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_51.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.3-rails-52:
+    docker:
+      - image: circleci/ruby:2.3.7-node-browsers
+
+    environment:
+      GEMFILE: Gemfile
+
+    steps:
+      *steps
+
+  ruby-2.4-rails-42:
+    docker:
+      - image: circleci/ruby:2.4.4-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_42.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.4-rails-50:
+    docker:
+      - image: circleci/ruby:2.4.4-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_50.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.4-rails-51:
+    docker:
+      - image: circleci/ruby:2.4.4-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_51.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.4-rails-52:
+    docker:
+      - image: circleci/ruby:2.4.4-node-browsers
+
+    environment:
+      GEMFILE: Gemfile
+
+    steps:
+      *steps
+
+  ruby-2.5-rails-42:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_42.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.5-rails-50:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_50.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.5-rails-51:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_51.gemfile
+
+    steps:
+      *steps
+
+  ruby-2.5-rails-52:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+
+    environment:
+      GEMFILE: Gemfile
+
+    steps:
+      *steps
+
+  jruby-9.2-rails-42:
+    docker:
+      - image: circleci/jruby:9.2.0.0-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_42.gemfile
+      JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
+
+    steps:
+      *steps
+
+  jruby-9.2-rails-50:
+    docker:
+      - image: circleci/jruby:9.2.0.0-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_50.gemfile
+      JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
+
+    steps:
+      *steps
+
+  jruby-9.2-rails-51:
+    docker:
+      - image: circleci/jruby:9.2.0.0-node-browsers
+
+    environment:
+      GEMFILE: gemfiles/rails_51.gemfile
+      JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
+
+    steps:
+      *steps
+
+  jruby-9.2-rails-52:
+    docker:
+      - image: circleci/jruby:9.2.0.0-node-browsers
+
+    environment:
+      GEMFILE: Gemfile
+      JRUBY_OPTS: "-J-Xmn1024m --dev --debug"
+
+    steps:
+      *steps
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - ruby-2.3-rails-42
+      - ruby-2.3-rails-50
+      - ruby-2.3-rails-51
+      - ruby-2.3-rails-52
+
+      - ruby-2.4-rails-42
+      - ruby-2.4-rails-50
+      - ruby-2.4-rails-51
+      - ruby-2.4-rails-52
+
+      - ruby-2.5-rails-42
+      - ruby-2.5-rails-50
+      - ruby-2.5-rails-51
+      - ruby-2.5-rails-52
+
+      - jruby-9.2-rails-42
+      - jruby-9.2-rails-50
+      - jruby-9.2-rails-51
+      - jruby-9.2-rails-52
