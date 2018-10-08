@@ -156,7 +156,7 @@ jobs:
 
   jruby92rails42:
     docker:
-      - image: circleci/jruby:9.2.0.0-node-browsers
+      - image: circleci/jruby:9.2.0.0-browsers
 
     environment:
       BUNDLE_GEMFILE: gemfiles/rails_42.gemfile
@@ -167,7 +167,7 @@ jobs:
 
   jruby92rails50:
     docker:
-      - image: circleci/jruby:9.2.0.0-node-browsers
+      - image: circleci/jruby:9.2.0.0-browsers
 
     environment:
       BUNDLE_GEMFILE: gemfiles/rails_50.gemfile
@@ -178,7 +178,7 @@ jobs:
 
   jruby92rails51:
     docker:
-      - image: circleci/jruby:9.2.0.0-node-browsers
+      - image: circleci/jruby:9.2.0.0-browsers
 
     environment:
       BUNDLE_GEMFILE: gemfiles/rails_51.gemfile
@@ -189,7 +189,7 @@ jobs:
 
   jruby92rails52:
     docker:
-      - image: circleci/jruby:9.2.0.0-node-browsers
+      - image: circleci/jruby:9.2.0.0-browsers
 
     environment:
       BUNDLE_GEMFILE: Gemfile
