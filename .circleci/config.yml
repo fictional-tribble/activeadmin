@@ -17,8 +17,12 @@ steps: &steps
       name: Install chromedriver
       command: bin/install_chromedriver.sh
 
+  - run:
+      name: Cat current Gemfile to a specific file so caching works
+      command: cat "$BUNDLE_GEMFILE.lock" > current_gemfile.lock
+
   - save_cache:
-      key: bundler-dependencies-{{ checksum "$BUNDLE_GEMFILE.lock" }}
+      key: bundler-dependencies-{{ checksum current_gemfile.lock }}
       paths:
         - vendor/bundle
 
