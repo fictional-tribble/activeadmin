@@ -5,9 +5,13 @@ version: 2
 steps: &steps
   - checkout
 
+  - run:
+      name: Cat current Gemfile to a specific file so caching works
+      command: cat "$BUNDLE_GEMFILE.lock" > current_gemfile.lock
+
   - restore_cache:
       keys:
-        - bundler-dependencies-{{ checksum "$BUNDLE_GEMFILE.lock" }}
+        - bundler-dependencies-{{ checksum current_gemfile.lock }}
 
   - run:
       name: Install dependencies
@@ -16,10 +20,6 @@ steps: &steps
   - run:
       name: Install chromedriver
       command: bin/install_chromedriver.sh
-
-  - run:
-      name: Cat current Gemfile to a specific file so caching works
-      command: cat "$BUNDLE_GEMFILE.lock" > current_gemfile.lock
 
   - save_cache:
       key: bundler-dependencies-{{ checksum current_gemfile.lock }}
