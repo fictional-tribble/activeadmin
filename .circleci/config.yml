@@ -34,7 +34,7 @@ steps: &steps
         bundle exec rake lint
 
 jobs:
-  ruby-2.3-rails-42:
+  ruby23rails42:
     docker:
       - image: circleci/ruby:2.3.7-node-browsers
 
@@ -44,7 +44,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.3-rails-50:
+  ruby23rails50:
     docker:
       - image: circleci/ruby:2.3.7-node-browsers
 
@@ -54,7 +54,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.3-rails-51:
+  ruby23rails51:
     docker:
       - image: circleci/ruby:2.3.7-node-browsers
 
@@ -64,7 +64,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.3-rails-52:
+  ruby23rails52:
     docker:
       - image: circleci/ruby:2.3.7-node-browsers
 
@@ -74,7 +74,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.4-rails-42:
+  ruby24rails42:
     docker:
       - image: circleci/ruby:2.4.4-node-browsers
 
@@ -84,7 +84,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.4-rails-50:
+  ruby24rails50:
     docker:
       - image: circleci/ruby:2.4.4-node-browsers
 
@@ -94,7 +94,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.4-rails-51:
+  ruby24rails51:
     docker:
       - image: circleci/ruby:2.4.4-node-browsers
 
@@ -104,7 +104,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.4-rails-52:
+  ruby24rails52:
     docker:
       - image: circleci/ruby:2.4.4-node-browsers
 
@@ -114,7 +114,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.5-rails-42:
+  ruby25rails42:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
 
@@ -124,7 +124,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.5-rails-50:
+  ruby25rails50:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
 
@@ -134,7 +134,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.5-rails-51:
+  ruby25rails51:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
 
@@ -144,7 +144,7 @@ jobs:
     steps:
       *steps
 
-  ruby-2.5-rails-52:
+  ruby25rails52:
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
 
@@ -154,7 +154,7 @@ jobs:
     steps:
       *steps
 
-  jruby-9.2-rails-42:
+  jruby92rails42:
     docker:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
@@ -165,7 +165,7 @@ jobs:
     steps:
       *steps
 
-  jruby-9.2-rails-50:
+  jruby92rails50:
     docker:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
@@ -176,7 +176,7 @@ jobs:
     steps:
       *steps
 
-  jruby-9.2-rails-51:
+  jruby92rails51:
     docker:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
@@ -187,7 +187,7 @@ jobs:
     steps:
       *steps
 
-  jruby-9.2-rails-52:
+  jruby92rails52:
     docker:
       - image: circleci/jruby:9.2.0.0-node-browsers
 
@@ -203,22 +203,22 @@ workflows:
 
   build:
     jobs:
-      - ruby-2.3-rails-42
-      - ruby-2.3-rails-50
-      - ruby-2.3-rails-51
-      - ruby-2.3-rails-52
+      - ruby23rails42
+      - ruby23rails50
+      - ruby23rails51
+      - ruby23rails52
 
-      - ruby-2.4-rails-42
-      - ruby-2.4-rails-50
-      - ruby-2.4-rails-51
-      - ruby-2.4-rails-52
+      - ruby24rails42
+      - ruby24rails50
+      - ruby24rails51
+      - ruby24rails52
 
-      - ruby-2.5-rails-42
-      - ruby-2.5-rails-50
-      - ruby-2.5-rails-51
-      - ruby-2.5-rails-52
+      - ruby25rails42
+      - ruby25rails50
+      - ruby25rails51
+      - ruby25rails52
 
-      - jruby-9.2-rails-42
-      - jruby-9.2-rails-50
-      - jruby-9.2-rails-51
-      - jruby-9.2-rails-52
+      - jruby92rails42
+      - jruby92rails50
+      - jruby92rails51
+      - jruby92rails52
