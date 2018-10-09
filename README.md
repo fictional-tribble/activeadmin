@@ -1,5 +1,7 @@
 # Active Admin
 
+[![GuardRails Staging badge](https://badges.staging.guardrails.io/fictional-tribble/activeadmin.svg)](https://www.staging.guardrails.io)
+
 [Active Admin](https://activeadmin.info) is a Ruby on Rails framework for
 creating elegant backends for website administration.
 
